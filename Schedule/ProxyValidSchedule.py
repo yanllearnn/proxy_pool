@@ -34,7 +34,7 @@ class ProxyValidSchedule(ProxyManager, object):
 
     def __validProxy(self, threads=20):
         """
-        验证useful_proxy代理
+        验证 useful_proxy 代理
         :param threads: 线程数
         :return:
         """

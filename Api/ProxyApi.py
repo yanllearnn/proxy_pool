@@ -58,7 +58,7 @@ def get():
 
 @app.route('/refresh/')
 def refresh():
-    # TODO refresh会有守护程序定时执行，由api直接调用性能较差，暂不使用
+    # TODO refresh 会有守护程序定时执行，由api直接调用性能较差，暂不使用
     # ProxyManager().refresh()
     pass
     return 'success'

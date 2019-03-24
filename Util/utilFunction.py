@@ -94,15 +94,28 @@ def validUsefulProxy(proxy):
     :param proxy:
     :return:
     """
+
     if isinstance(proxy, bytes):
         proxy = proxy.decode('utf8')
-    proxies = {"http": "http://{proxy}".format(proxy=proxy)}
+
+    proxies = [{"http": "http://{proxy}".format(proxy=proxy)},{"https": "https://{proxy}".format(proxy=proxy)}]
+
     try:
-        # 超过20秒的代理就不要了
-        r = requests.get('http://httpbin.org/ip', proxies=proxies, timeout=10, verify=False)
-        if r.status_code == 200 and r.json().get("origin"):
-            # logger.info('%s is ok' % proxy)
-            return True
+        for v in proxies:
+            # 超过20秒的代理就不要了
+            v = dict(v)
+            if v.__contains__('http'):
+                url = 'http://httpbin.org/ip'
+            else :
+                url = 'https://httpbin.org/ip'
+
+            r = requests.get(url, proxies=v, timeout=10, verify=False)
+            if r.status_code == 200 and r.json().get("origin"):
+                # logger.info('%s is ok' % proxy)
+                continue
+        
+        return True
+
     except Exception as e:
         # logger.error(str(e))
         return False

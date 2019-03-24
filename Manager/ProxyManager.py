@@ -36,7 +36,7 @@ class ProxyManager(object):
 
     def refresh(self):
         """
-        fetch proxy into Db by ProxyGetter/getFreeProxy.py
+        fetch proxy into Db by ProxyGetter.getFreeProxy.py
         :return:
         """
         self.db.changeTable(self.raw_proxy_queue)

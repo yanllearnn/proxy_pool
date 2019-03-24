@@ -60,7 +60,7 @@ DATABASES = {
 # 配置 ProxyGetter
 
 PROXY_GETTER = [
-    "freeProxyFirst",      # 这里是启用的代理抓取函数名，可在ProxyGetter/getFreeProxy.py 扩展
+    "freeProxyFirst",      # 这里是启用的代理抓取函数名，可在 ProxyGetter/getFreeProxy.py 扩展
     "freeProxySecond",
     ....
 ]
